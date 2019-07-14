@@ -1,68 +1,88 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Challenge 05. Application with ReactJS
 
-## Available Scripts
+In this challenge we will add new features in the application that we developed.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### Catching errors
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Add a `try / catch` around the code in the` handleSubmit` function present in the `Main` component and if a repository is not found in the Github API add a red border around the text input where the user typed the repository name.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Duplicate repository
 
-### `npm test`
+Before making the API call in the `handleSubmit` function, check the repository is not duplicated, that is, if it does not already exist in the` repositories` state.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If it exists, issue an error, and the code will fall into the `catch` of` try / catch` created in the previous feature.
 
-### `npm run build`
+```js
+throw 'Repositório duplicado';
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Issues status filter
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Add a status filter to the issues listing created in the repository detail. The status represents whether the issue is open, closed, or an option to view all.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Request examples:
 
-### `npm run eject`
+```
+https://api.github.com/repos/rocketseat/unform/issues?state=all
+https://api.github.com/repos/rocketseat/unform/issues?state=open
+https://api.github.com/repos/rocketseat/unform/issues?state=closed
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Further details at documentation in [this link](https://developer.github.com/v3/issues/#parameters-1);
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Pagination
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Add pagination on the issues listed in the repository detail. The Github API lists a maximum of 30 issues per page and we can control the current page number by a parameter in the request address:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+https://api.github.com/repos/rocketseat/unform/issues?page=2
+```
 
-## Learn More
+Add only a button to next page and previous page. The previous page button should be off on the first page.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Submit
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This challenge **does not need to be delivered** and will not receive correction, but you can see the result of the challenge code here: https://github.com/Rocketseat/bootcamp-gostack-desafio-05
 
-### Code Splitting
+"For those who get better every day, getting ready is utopia!"
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Getting Started
 
-### Analyzing the Bundle Size
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Prerequisites
 
-### Making a Progressive Web App
+The project can be built with npm or yarn, so choose one of the approach bellow in case you don't have any installed on your system.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+* **Npm** is distributed with Node.js which means that when you download Node.js, you automatically get npm installed on your computer. [Download Node.js](https://nodejs.org/en/download/)
 
-### Advanced Configuration
+* **Yarn** is a package manager built by Facebook Team and seems to be faster than npm in general.  [Download Yarn](https://yarnpkg.com/en/docs/install)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Installing
 
-### Deployment
+To download the project follow the instructions bellow:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+```
+1. git clone https://github.com/diegomais/rocketseat-bootcamp-gostack-challenge-05-github-reactjs.git
+2. cd rocketseat-bootcamp-gostack-challenge-05-github-reactjs
+```
 
-### `npm run build` fails to minify
+Then install dependencies and run:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+3. yarn install
+4. yarn dev
+```
+
+or
+
+```
+3. npm install
+4. npm dev
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
