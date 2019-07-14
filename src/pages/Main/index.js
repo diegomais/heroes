@@ -45,6 +45,10 @@ export default class Main extends Component {
     try {
       const { newRepo, repositories } = this.state;
 
+      if (newRepo === '') {
+        throw new Error('Please enter a repository');
+      }
+
       const hasRepo = repositories.find(r => r.name === newRepo);
 
       if (hasRepo) {
