@@ -2,6 +2,12 @@
 
 In this challenge we will add new features in the application that we developed.
 
+## GitHub
+
+App to manage awesome GitHub repositories 🚀
+
+![GitHub](assets/github.gif)
+
 ## Features
 
 ### Catching errors
