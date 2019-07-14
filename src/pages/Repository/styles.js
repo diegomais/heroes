@@ -108,6 +108,7 @@ export const IssueFilter = styled.div`
   display: flex;
   justify-content: center;
   padding-bottom: 15px;
+
   button {
     border-radius: 4px;
     outline: 0;
@@ -118,6 +119,27 @@ export const IssueFilter = styled.div`
     &:nth-child(${props => props.active + 1}) {
       background: #576574;
       color: white;
+    }
+  }
+`;
+
+export const IssuePage = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  font-size: 12px;
+
+  button {
+    border-radius: 4px;
+    outline: 0;
+    border: 0;
+    padding: 8px;
+    transition: opacity 0.25s ease-out;
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
     }
   }
 `;

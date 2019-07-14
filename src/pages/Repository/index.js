@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList, IssueFilter } from './styles';
+import { Loading, Owner, IssueList, IssueFilter, IssuePage } from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -25,6 +25,7 @@ export default class Repository extends Component {
       { state: 'closed', label: 'Closed', active: false },
     ],
     filterIndex: 0,
+    page: 1,
     loading: true,
   };
 
@@ -49,12 +50,12 @@ export default class Repository extends Component {
   }
 
   loadIssues = async () => {
-    const { filters, filterIndex, repository } = this.state;
+    const { filters, filterIndex, repository, page } = this.state;
 
     const repoName = repository.full_name;
 
     const response = await api.get(`/repos/${repoName}/issues`, {
-      params: { state: filters[filterIndex].state, per_page: 5 },
+      params: { state: filters[filterIndex].state, per_page: 5, page },
     });
 
     this.setState({ issues: response.data });
@@ -65,8 +66,23 @@ export default class Repository extends Component {
     this.loadIssues();
   };
 
+  handlePageClick = async action => {
+    const { page } = this.state;
+
+    await this.setState({ page: action === 'next' ? page + 1 : page - 1 });
+
+    this.loadIssues();
+  };
+
   render() {
-    const { repository, issues, filters, filterIndex, loading } = this.state;
+    const {
+      repository,
+      issues,
+      filters,
+      filterIndex,
+      page,
+      loading,
+    } = this.state;
 
     if (loading) {
       return <Loading>Loading...</Loading>;
@@ -107,6 +123,18 @@ export default class Repository extends Component {
               </div>
             </li>
           ))}
+          <IssuePage>
+            <button
+              type="button"
+              disabled={page < 2}
+              onClick={() => this.handlePageClick('back')}
+            >
+              Previous
+            </button>
+            <button type="button" onClick={() => this.handlePageClick('next')}>
+              Next
+            </button>
+          </IssuePage>
         </IssueList>
       </Container>
     );
