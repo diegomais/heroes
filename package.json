@@ -4,7 +4,8 @@
   "description": "Project using Kubernetes that presents a simple API in Node.js with Postgres to insert, search, update and delete heroes.",
   "main": "index.js",
   "scripts": {
-    "start": "npx pm2-docker index.js"
+    "start": "npx pm2-docker index.js",
+    "test": "sh test.sh"
   },
   "repository": {
     "type": "git",
