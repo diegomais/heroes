@@ -1,0 +1,36 @@
+{
+  "name": "heroes",
+  "version": "1.0.0",
+  "description": "Project using Kubernetes that presents a simple API in Node.js with Postgres to insert, search, update and delete heroes.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx pm2-docker index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegomais/heroes.git"
+  },
+  "keywords": [
+    "kubernetes",
+    "k8s",
+    "node",
+    "postgres"
+  ],
+  "author": "Diego Mais <diegomais.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diegomais/heroes/issues"
+  },
+  "homepage": "https://github.com/diegomais/heroes#readme",
+  "dependencies": {
+    "@hapi/hapi": "^20.1.0",
+    "@hapi/inert": "^6.0.3",
+    "@hapi/vision": "^6.0.1",
+    "hapi-swagger": "^14.1.0",
+    "joi": "^17.3.0",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "pm2": "^4.5.4",
+    "sequelize": "^6.5.0"
+  }
+}
