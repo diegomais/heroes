@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: api
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_HOST: postgres:mysecretpassword@postgres:5432
+      PORT: 3333
+    ports:
+      - 3333:3333
+    volumes:
+      - .:/app
+      - /app/node_modules/
+
+  postgres:
+    container_name: postgres
+    environment:
+      POSTGRES_DB: heroes
+      POSTGRES_PASSWORD: mysecretpassword
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    restart: always
