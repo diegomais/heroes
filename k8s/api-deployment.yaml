@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-heroes
+  labels:
+    app: api-heroes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-heroes
+  template:
+    metadata:
+      labels:
+        app: api-heroes
+    spec:
+      containers:
+      - name: api-heroes
+        image: diegomais/heroes
+        env:
+          - name: PORT
+            value: "3333"
+          - name: POSTGRES_DB
+            value: heroes
+          - name: POSTGRES_HOST
+            value: postgres:mysecretpassword@postgres-svc
+        ports:
+        - containerPort: 3333
