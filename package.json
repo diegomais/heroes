@@ -27,7 +27,7 @@
     "@hapi/hapi": "^20.1.2",
     "@hapi/inert": "^6.0.3",
     "@hapi/vision": "^6.0.1",
-    "hapi-swagger": "^14.1.0",
+    "hapi-swagger": "^14.5.5",
     "joi": "^17.4.0",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
